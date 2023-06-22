@@ -1,6 +1,7 @@
-\documentclass[10pt, a4paper, twoside]{scrartcl}
-
+\def\bibpath{references.bib}
+\def\myfont{charter} % charter, palatino, helvetica, computerModern
 \input{options.tex}	
+
 
 \title{Document}
 \author{John Doe}
@@ -12,14 +13,15 @@
 
 \begin{abstract}
 	\blindtext
+	
+	\texttt{T}T $X$X
 \end{abstract}
 
 \section{Introduction}
 
 
-\blindtext\cite{schurmann_konstruieren_2007}
+\blindmathpaper\cite{schurmann_konstruieren_2007}
 
-\blindtext\cite{koller_prinziplosungen_1998}
 
 \section{Methods}
 
@@ -31,7 +33,7 @@
 
 \section{Discussion}
 
-\Blindtext\cite{wachter_angewandter_2017}
+\blindtext\cite{wachter_angewandter_2017}
 
 \section{Conclusion and Outlook}
 

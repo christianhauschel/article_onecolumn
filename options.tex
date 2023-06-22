@@ -1,3 +1,6 @@
+\documentclass[10pt, a4paper, twoside]{scrartcl}
+
+
 % ==============================================================================
 % General
 % ==============================================================================
@@ -5,56 +8,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mathtools}
+\usepackage{ifthen}
+
 
 % ==============================================================================
 % Fonts
 % ==============================================================================
 
+% Custom Titles
+\usepackage{titling}
+
 %\usepackage{polyglossia}
 %\setdefaultlanguage[variant=swiss,spelling=new]{german}
 %\setotherlanguage[variant=american]{english}
-%
-%%% Libertinus
-%\usepackage{fontspec}
-%\usepackage{unicode-math}
-%\setmainfont[Ligatures=TeX]{Libertinus Serif}
-%\setmonofont[Scale=MatchLowercase]{Fira Mono} % Consolas, Hack
-%\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{Libertinus Math}[]
-%\setsansfont[Scale=MatchUppercase, Ligatures=TeX,
-%BoldFont = {Fira Sans Medium}]{Fira Sans Book}
-%%\setsansfont[Scale=MatchUppercase, Ligatures=TeX,
-%%BoldFont = {Source Sans Pro Semibold}]{Source Sans Pro}
-%%\usepackage[cal=cm, scaled=0.96]{mathalfa} % mathcal
-
-
-%%% Sans Serif
-%\usepackage{fontspec}
-%\usepackage{unicode-math}
-%\setmainfont[Numbers=OldStyle, Ligatures=TeX, BoldFont = {Fira Sans Medium}]{Fira Sans Book}
-%\setmonofont[Numbers=OldStyle,Scale=MatchLowercase]{Fira Mono} % Consolas
-%\setmathfont[Scale=MatchLowercase,math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{Libertinus Math}[]
-%\setsansfont[Numbers=OldStyle,Scale=MatchUppercase, Ligatures=TeX,
-%BoldFont = {Fira Sans Medium}]{Fira Sans Book}
-
-
-%%% Minion Pro
-%\usepackage[no-math]{fontspec}
-%\setmonofont[Scale=MatchLowercase]{Consolas} % Hack
-%\setmainfont[Ligatures=TeX]{Minion Pro}
-%\setsansfont[Scale=MatchUppercase]{TeX Gyre Heros}
-%%\usepackage[cal=cm, scaled=0.96]{mathalfa} % mathcal
-
-
-%%% Termes
-%\usepackage{fontspec}
-%\usepackage{unicode-math}
-%%\setmainfont[Ligatures=TeX]{Libertinus Serif}
-%\setmainfont[Ligatures=TeX]{TeX Gyre Termes}
-%%\setmathfont{Libertinus Math}[]
-%\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TeX Gyre Termes Math}
-%\setsansfont{TeX Gyre Heros}
-%%\usepackage[cal=cm, scaled=0.96]{mathalfa} % mathcal
-
 
 
 \usepackage[english]{babel}
@@ -64,38 +30,74 @@
 % XCharter
 % -------------------------------------
 
-\usepackage[sups, scaled=.96]{XCharter} % 'osf' = oldstyle figures
-\linespread{1.05}
-\usepackage[scaled=0.937, lining]{FiraSans}
-\usepackage[scaled=0.88, lining]{FiraMono}
-%\usepackage[scale=0.89]{tgheros}
-%\usepackage[varqu,varl, scaled=1.04]{inconsolata} % sans serif typewr iter
-%\usepackage[xcharter,bigdelims,vvarbb,scaled=1.055]{newtxmath}  % bb from STIX
-\AtBeginDocument {
-	\DeclareSymbolFont{bch}{T1}{\rmdefault}{m}{n}
-	\DeclareMathDelimiter{(}{\mathopen}{bch}{'050}{largesymbols}{"00}
-	\DeclareMathDelimiter{)}{\mathopen}{bch}{'051}{largesymbols}{"01}
+\ifthenelse{\equal{\myfont}{charter}}{%
+	\usepackage[sups, scaled=.96]{XCharter}
+	\linespread{1.152}
+	\usepackage[scaled=0.937, lining]{FiraSans}
+	\usepackage[scaled=0.95, lining]{FiraMono}
+	\AtBeginDocument {
+		\DeclareSymbolFont{bch}{T1}{\rmdefault}{m}{n}
+		\DeclareMathDelimiter{(}{\mathopen}{bch}{'050}{largesymbols}{"00}
+		\DeclareMathDelimiter{)}{\mathopen}{bch}{'051}{largesymbols}{"01}
+	}
+	\addtokomafont{disposition}{\normalfont\sffamily\firamedium}
+	
+	\usepackage[charter,expert, cal=cmcal]{mathdesign}
+	\usepackage{textcomp}
+	\pretitle{\begin{center}\LARGE\sffamily\firamedium}
+		\posttitle{\par\end{center}}
 }
-\addtokomafont{disposition}{\normalfont\sffamily\firamedium}
 
-\usepackage[charter,expert, cal=cmcal]{mathdesign}
-%\usepackage[mathcal]{eucal}
+% -------------------------------------
+% Palatino
+% -------------------------------------•
 
-\usepackage{textcomp}
+\ifthenelse{\equal{\myfont}{palatino}}{%
+%	\usepackage[no-math]{fontspec}
+%	\usepackage[scale=0.95]{tgpagella}
+%	\usepackage{palatino}
+	\usepackage[scaled=0.98, lining]{FiraMono}
+	%\usepackage[T1]{fontenc}
+%	\usepackage[]{unicode-math}
+%	\setmainfont{TeX Gyre Pagella}
+%	\setmonofont[Scale=MatchUppercase]{Inconsolata}
+%	\setmathfont{TeX Gyre Pagella Math}
+	%\setsansfont[Scale=MatchUppercase]{Latin Modern Sans} % has no small caps
+%	\setsansfont[Scale=MatchUppercase]{Cabin} % has no small caps
+	%\setsansfont[Scale=MatchUppercase]{Libertinus Sans}
+	\usepackage[sc]{mathpazo} % optional: osf
+	\linespread{1.2} 
+	\addtokomafont{disposition}{\normalfont\bfseries}
+	\pretitle{\begin{center}\LARGE\bfseries}
+		\posttitle{\par\end{center}}
+}
 
-%%% Palatino
-%\usepackage[no-math]{fontspec}
-%%\usepackage[T1]{fontenc}
-%\usepackage[]{unicode-math}
-%\setmainfont{TeX Gyre Pagella}
-%\setmonofont[Scale=MatchUppercase]{Inconsolata}
-%\setmathfont{TeX Gyre Pagella Math}
-%%\setsansfont[Scale=MatchUppercase]{Latin Modern Sans} % has no small caps
-%\setsansfont[Scale=MatchUppercase]{Cabin} % has no small caps
-%%\setsansfont[Scale=MatchUppercase]{Libertinus Sans}
-%%\usepackage[sc]{mathpazo} % optional: osf
-%\linespread{1.05}  
+% -------------------------------------
+% TGHeros (aka Arial, Helvetica)
+% -------------------------------------
 
+\ifthenelse{\equal{\myfont}{helvetica}}{%
+	\renewcommand{\familydefault}{\sfdefault}
+	\usepackage[scale=0.94]{tgheros} % fit uppercase
+	\usepackage[tx]{sfmath}
+	\usepackage[scale=0.94, lining]{FiraMono} % fit undercase
+	\linespread{1.128} % 0.94 * 1.2
+	\addtokomafont{disposition}{\sffamily\bfseries}
+	\pretitle{\begin{center}\LARGE\sffamily\bfseries}
+		\posttitle{\par\end{center}}
+}
+
+% -------------------------------------
+% Computer Modern
+% -------------------------------------
+
+\ifthenelse{\equal{\myfont}{computerModern}}{%
+	\usepackage{lmodern}
+	\addtokomafont{disposition}{\normalfont\bfseries}
+	\pretitle{\begin{center}\LARGE\bfseries}
+			\posttitle{\par\end{center}}
+	\linespread{1.128}
+}
 
 % ==============================================================================
 % Random Packages 
@@ -105,7 +107,7 @@
 %\usepackage{marvosym} %Einbindung verschiedener Symbole
 %\usepackage{array}
 %\usepackage{enumerate} %Erweiterung der enumerate-Umgebung
-%\usepackage{ifthen,calc}
+
 %\usepackage{mathrsfs,amssymb} %Zusatzzeichen
 \usepackage{wrapfig}
 %\usepackage[intlimits]{empheq} %Lädt auch amsmath; Option intlimits Integralgrenzen über/unter Integral gestellt
@@ -120,7 +122,7 @@
 \usepackage{enumitem} %For list environments
 %\usepackage{parskip} %Einzug aus, Absatzabstand ein
 %\usepackage{sfmath}
-\usepackage{blindtext}
+\usepackage[]{blindtext}
 \usepackage{floatflt}
 \usepackage{float}
 %\usepackage{titlesec}
@@ -297,10 +299,9 @@
 % Title Settings
 % ==============================================================================
 
-\usepackage{titling}
+
 \setlength{\droptitle}{-5em}
-\pretitle{\begin{center}\LARGE\sffamily\firamedium}
-		\posttitle{\par\end{center}}
+
 \preauthor{\begin{center}}
 		\postauthor{\par\end{center}}
 \predate{\begin{center}}
@@ -329,21 +330,6 @@
 
 
 % ==============================================================================
-% Bible 
-% ==============================================================================
-
-%\usepackage{bibleref-german}
-%\biblerefstyle{Lutherbibel}
-%\biblerefformat{kurz}
-
-\usepackage{bibleref}
-\biblerefstyle{jerusalem}
-% Example: \bibleverses{Ex}(20:2,5,7-11)(21:3)
-
-\newcommand{\V}[1]{\raisebox{.5ex}{\footnotesize#1 \nobreak\hspace{0.01em}}}
-
-
-% ==============================================================================
 % Bibliography 
 % ==============================================================================
 
@@ -360,5 +346,5 @@
 	eprint=false,%
 	style= numeric-comp,%	
 ]{biblatex}
-\addbibresource{references.bib}
+\addbibresource{\bibpath}
 \newcommand{\af}[1]{Adapted from \citet{#1}.}
