@@ -41,11 +41,11 @@
 		\DeclareMathDelimiter{)}{\mathopen}{bch}{'051}{largesymbols}{"01}
 	}
 	\addtokomafont{disposition}{\normalfont\sffamily\firamedium}
-	
+
 	\usepackage[charter,expert, cal=cmcal]{mathdesign}
 	\usepackage{textcomp}
 	\pretitle{\begin{center}\LARGE\sffamily\firamedium}
-		\posttitle{\par\end{center}}
+			\posttitle{\par\end{center}}
 }
 
 % -------------------------------------
@@ -53,23 +53,12 @@
 % -------------------------------------•
 
 \ifthenelse{\equal{\myfont}{palatino}}{%
-%	\usepackage[no-math]{fontspec}
-%	\usepackage[scale=0.95]{tgpagella}
-%	\usepackage{palatino}
 	\usepackage[scaled=0.98, lining]{FiraMono}
-	%\usepackage[T1]{fontenc}
-%	\usepackage[]{unicode-math}
-%	\setmainfont{TeX Gyre Pagella}
-%	\setmonofont[Scale=MatchUppercase]{Inconsolata}
-%	\setmathfont{TeX Gyre Pagella Math}
-	%\setsansfont[Scale=MatchUppercase]{Latin Modern Sans} % has no small caps
-%	\setsansfont[Scale=MatchUppercase]{Cabin} % has no small caps
-	%\setsansfont[Scale=MatchUppercase]{Libertinus Sans}
 	\usepackage[sc]{mathpazo} % optional: osf
-	\linespread{1.2} 
+	\linespread{1.2}
 	\addtokomafont{disposition}{\normalfont\bfseries}
 	\pretitle{\begin{center}\LARGE\bfseries}
-		\posttitle{\par\end{center}}
+			\posttitle{\par\end{center}}
 }
 
 % -------------------------------------
@@ -84,7 +73,7 @@
 	\linespread{1.128} % 0.94 * 1.2
 	\addtokomafont{disposition}{\sffamily\bfseries}
 	\pretitle{\begin{center}\LARGE\sffamily\bfseries}
-		\posttitle{\par\end{center}}
+			\posttitle{\par\end{center}}
 }
 
 % -------------------------------------
